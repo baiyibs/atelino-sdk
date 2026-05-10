@@ -16,15 +16,15 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "generate": "node scripts/generate-sdk.js"
+    "generate": "npx openapi-ts"
   },
   "devDependencies": {
+    "@hey-api/client-fetch": "^0.13.1",
     "@hey-api/openapi-ts": "^0.97.1",
     "@types/node": "^25.6.2",
+    "openapi-typescript-codegen": "^0.30.0",
+    "swagger-typescript-api": "^13.9.1",
     "swagger2openapi": "^7.0.8",
     "typescript": "^6.0.3"
-  },
-  "dependencies": {
-    "@hey-api/client-fetch": "^0.13.1"
   }
 }
