@@ -1,5 +1,4 @@
-name: Generate SDK from Backend Swagger
-
+name: Generate SDK
 on:
   workflow_dispatch:
 
