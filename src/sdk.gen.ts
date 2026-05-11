@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import type { Client, Options as Options2, TDataShape } from './client/index.js';
-import type { DeleteHitokotoByIdData, DeleteHitokotoByIdErrors, DeleteHitokotoByIdResponses, GetHitokotoByIdData, GetHitokotoByIdErrors, GetHitokotoByIdResponses, GetHitokotoData, GetHitokotoErrors, GetHitokotoListData, GetHitokotoListErrors, GetHitokotoListResponses, GetHitokotoResponses, PostHitokotoData, PostHitokotoErrors, PostHitokotoResponses } from './types.gen.js';
+import type { DeleteApiHitokotoByIdData, DeleteApiHitokotoByIdErrors, DeleteApiHitokotoByIdResponses, GetApiHitokotoByIdData, GetApiHitokotoByIdErrors, GetApiHitokotoByIdResponses, GetApiHitokotoData, GetApiHitokotoErrors, GetApiHitokotoListData, GetApiHitokotoListErrors, GetApiHitokotoListResponses, GetApiHitokotoResponses, GetApiUserByIdData, GetApiUserByIdErrors, GetApiUserByIdResponses, PostApiHitokotoData, PostApiHitokotoErrors, PostApiHitokotoResponses, PostAuthLoginData, PostAuthLoginErrors, PostAuthLoginResponses, PostAuthRegisterData, PostAuthRegisterErrors, PostAuthRegisterResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -21,18 +21,18 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * 随机获取一言
  *
- * 从数据库中随机获取一条一言记录，数据库异常则返回 500。
+ * 从数据库中随机获取一条一言记录。
  */
-export const getHitokoto = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoResponses, GetHitokotoErrors, ThrowOnError>({ url: '/hitokoto', ...options });
+export const getApiHitokoto = <ThrowOnError extends boolean = false>(options?: Options<GetApiHitokotoData, ThrowOnError>) => (options?.client ?? client).get<GetApiHitokotoResponses, GetApiHitokotoErrors, ThrowOnError>({ url: '/api/hitokoto', ...options });
 
 /**
  * 添加一言
  *
- * 创建一条新的一言记录。如果内容已存在，则返回 409 冲突错误；其他数据库异常返回 500。
+ * 创建一条新的一言记录。
  */
-export const postHitokoto = <ThrowOnError extends boolean = false>(options: Options<PostHitokotoData, ThrowOnError>) => (options.client ?? client).post<PostHitokotoResponses, PostHitokotoErrors, ThrowOnError>({
+export const postApiHitokoto = <ThrowOnError extends boolean = false>(options: Options<PostApiHitokotoData, ThrowOnError>) => (options.client ?? client).post<PostApiHitokotoResponses, PostApiHitokotoErrors, ThrowOnError>({
     security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/hitokoto',
+    url: '/api/hitokoto',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -43,32 +43,67 @@ export const postHitokoto = <ThrowOnError extends boolean = false>(options: Opti
 /**
  * 获取一言列表
  *
- * 从数据库中查询所有的一言记录，数据库异常则返回 500。
+ * 从数据库中查询所有的一言记录。
  */
-export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoListResponses, GetHitokotoListErrors, ThrowOnError>({
+export const getApiHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetApiHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetApiHitokotoListResponses, GetApiHitokotoListErrors, ThrowOnError>({
     security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/hitokoto/list',
+    url: '/api/hitokoto/list',
     ...options
 });
 
 /**
  * 删除一言
  *
- * 传入一言的 ID，从数据库中删除对应的记录。若 ID 不存在则返回 404，数据库异常则返回 500。
+ * 传入一言的 ID，从数据库中删除对应的记录。
  */
-export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError>({
+export const deleteApiHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteApiHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiHitokotoByIdResponses, DeleteApiHitokotoByIdErrors, ThrowOnError>({
     security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/hitokoto/{id}',
+    url: '/api/hitokoto/{id}',
     ...options
 });
 
 /**
  * 获取一言
  *
- * 传入一言的 ID，从数据库中查询对应的记录。若 ID 不存在则返回 404，数据库异常则返回 500。
+ * 传入一言的 ID，从数据库中查询对应的记录。
  */
-export const getHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetHitokotoByIdResponses, GetHitokotoByIdErrors, ThrowOnError>({
+export const getApiHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetApiHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetApiHitokotoByIdResponses, GetApiHitokotoByIdErrors, ThrowOnError>({
     security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/hitokoto/{id}',
+    url: '/api/hitokoto/{id}',
     ...options
+});
+
+/**
+ * 获取用户
+ *
+ * 传入用户的 ID，从数据库中查询指定的用户。
+ */
+export const getApiUserById = <ThrowOnError extends boolean = false>(options: Options<GetApiUserByIdData, ThrowOnError>) => (options.client ?? client).get<GetApiUserByIdResponses, GetApiUserByIdErrors, ThrowOnError>({ url: '/api/user/{id}', ...options });
+
+/**
+ * 用户登录
+ *
+ * 用户登录接口
+ */
+export const postAuthLogin = <ThrowOnError extends boolean = false>(options: Options<PostAuthLoginData, ThrowOnError>) => (options.client ?? client).post<PostAuthLoginResponses, PostAuthLoginErrors, ThrowOnError>({
+    url: '/auth/login',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * 用户注册
+ *
+ * 用户注册接口
+ */
+export const postAuthRegister = <ThrowOnError extends boolean = false>(options: Options<PostAuthRegisterData, ThrowOnError>) => (options.client ?? client).post<PostAuthRegisterResponses, PostAuthRegisterErrors, ThrowOnError>({
+    url: '/auth/register',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
 });
