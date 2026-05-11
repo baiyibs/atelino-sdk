@@ -1,0 +1,48 @@
+name: Update SDK on API Release
+
+on:
+  repository_dispatch:
+    types: [api-version-updated]
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  update-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout SDK Repository
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Update SDK Version from Payload
+        run: |
+          NEW_VERSION="${{ github.event.client_payload.version }}"
+          echo "Updating SDK to API version: ${NEW_VERSION}"
+          npm version ${NEW_VERSION} --no-git-tag-version --allow-same-version
+
+      - name: Generate SDK
+        run: npm run generate
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: 根据后端 API 版本 v${{ github.event.client_payload.version }} 自动更新 SDK" || echo "没有需要提交的变更"
+          git pull --rebase origin master
+          git push origin master
