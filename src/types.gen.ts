@@ -32,15 +32,24 @@ export type PostHitokotoErrors = {
     /**
      * 请求参数错误
      */
-    400: AtelinoInternalDtoResponse;
+    400: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
     /**
      * 该一言已存在
      */
-    409: AtelinoInternalDtoResponse;
+    409: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
     /**
      * 数据库错误
      */
-    500: AtelinoInternalDtoResponse;
+    500: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
 };
 
 export type PostHitokotoError = PostHitokotoErrors[keyof PostHitokotoErrors];
@@ -50,8 +59,67 @@ export type PostHitokotoResponses = {
      * 添加成功
      */
     200: AtelinoInternalDtoResponse & {
+        code?: number;
         data?: AtelinoInternalDtoHitokotoIdRequest;
+        message?: string;
     };
 };
 
 export type PostHitokotoResponse = PostHitokotoResponses[keyof PostHitokotoResponses];
+
+export type DeleteHitokotoByIdData = {
+    body?: never;
+    path: {
+        /**
+         * 一言 ID
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/hitokoto/{id}';
+};
+
+export type DeleteHitokotoByIdErrors = {
+    /**
+     * 请求参数错误
+     */
+    400: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
+    /**
+     * 未授权
+     */
+    401: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
+    /**
+     * 没有找到对应的一言
+     */
+    404: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
+    /**
+     * 数据库错误
+     */
+    500: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
+};
+
+export type DeleteHitokotoByIdError = DeleteHitokotoByIdErrors[keyof DeleteHitokotoByIdErrors];
+
+export type DeleteHitokotoByIdResponses = {
+    /**
+     * 删除成功
+     */
+    200: AtelinoInternalDtoResponse & {
+        code?: number;
+        message?: string;
+    };
+};
+
+export type DeleteHitokotoByIdResponse = DeleteHitokotoByIdResponses[keyof DeleteHitokotoByIdResponses];

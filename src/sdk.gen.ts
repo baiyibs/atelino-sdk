@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import type { Client, Options as Options2, TDataShape } from './client/index.js';
-import type { PostHitokotoData, PostHitokotoErrors, PostHitokotoResponses } from './types.gen.js';
+import type { DeleteHitokotoByIdData, DeleteHitokotoByIdErrors, DeleteHitokotoByIdResponses, PostHitokotoData, PostHitokotoErrors, PostHitokotoResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -21,13 +21,25 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * 添加一言
  *
- * 创建一条新的一言记录，如果内容已存在则返回冲突错误
+ * 创建一条新的一言记录。如果内容已存在，则返回 409 冲突错误；其他数据库异常返回 500。
  */
 export const postHitokoto = <ThrowOnError extends boolean = false>(options: Options<PostHitokotoData, ThrowOnError>) => (options.client ?? client).post<PostHitokotoResponses, PostHitokotoErrors, ThrowOnError>({
+    security: [{ scheme: 'basic', type: 'http' }],
     url: '/hitokoto',
     ...options,
     headers: {
         'Content-Type': 'application/json',
         ...options.headers
     }
+});
+
+/**
+ * 删除一言
+ *
+ * 传入一言的 ID，从数据库中删除对应的记录。若 ID 不存在则返回 404，数据库异常则返回 500。
+ */
+export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError>({
+    security: [{ scheme: 'basic', type: 'http' }],
+    url: '/hitokoto/{id}',
+    ...options
 });
