@@ -8,5 +8,12 @@ export default defineConfig({
 		path: 'src',
 		clean: true,
 	},
-	plugins: ['@hey-api/sdk', '@hey-api/client-fetch'],
+	plugins: [
+		'@hey-api/sdk',
+		{
+			name: '@hey-api/client-fetch',
+			exportFromIndex: true,
+		},
+	],
+	client: '@hey-api/client-fetch',
 });
