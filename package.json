@@ -1,37 +1,41 @@
 {
-  "name": "atelino-sdk",
-  "version": "1.0.1",
-  "author": "BAIYI",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist/"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "prepublishOnly": "npm run build",
-    "generate": "openapi-ts"
-  },
-  "devDependencies": {
-    "@hey-api/client-fetch": "^0.13.1",
-    "@hey-api/openapi-ts": "^0.97.1",
-    "@types/node": "^25.6.2",
-    "typescript": "^6.0.3"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/baiyibs/atelino-sdk.git"
-  }
+	"name": "atelino-sdk",
+	"version": "1.0.1",
+	"author": "BAIYI",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./client": {
+			"import": "./dist/client/index.js",
+			"types": "./dist/client/index.d.ts"
+		}
+	},
+	"files": [
+		"dist/"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"prepublishOnly": "npm run build",
+		"generate": "openapi-ts"
+	},
+	"devDependencies": {
+		"@hey-api/client-fetch": "^0.13.1",
+		"@hey-api/openapi-ts": "^0.97.1",
+		"@types/node": "^25.6.2",
+		"typescript": "^6.0.3"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/baiyibs/atelino-sdk.git"
+	}
 }
