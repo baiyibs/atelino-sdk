@@ -1,0 +1,8 @@
+src/
+!dist/
+.github/
+node_modules/
+.idea/
+
+*.ts
+openapi-ts.config.ts

@@ -7,12 +7,11 @@ on:
 permissions:
   contents: write
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   update-sdk:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout SDK Repository
         uses: actions/checkout@v6
@@ -46,3 +45,11 @@ jobs:
           git commit -m "chore: 根据后端 API 版本 v${{ github.event.client_payload.version }} 自动更新 SDK" || echo "没有需要提交的变更"
           git pull --rebase origin master
           git push origin master
+
+      - name: Publish to npm
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm publish
