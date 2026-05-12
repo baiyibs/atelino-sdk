@@ -9,7 +9,10 @@ export default defineConfig({
 		clean: true,
 	},
 	plugins: [
-		'@hey-api/sdk',
+		{
+			name: '@hey-api/sdk',
+			responseStyle: 'data',
+		},
 		{
 			name: '@hey-api/client-fetch',
 			exportFromIndex: true,

@@ -23,14 +23,19 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
  *
  * 从数据库中随机获取一条一言记录。
  */
-export const getHitokotoRandom = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoRandomData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoRandomResponses, GetHitokotoRandomErrors, ThrowOnError>({ url: '/api/hitokoto', ...options });
+export const getHitokotoRandom = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoRandomData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoRandomResponses, GetHitokotoRandomErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/api/hitokoto',
+    ...options
+});
 
 /**
  * 添加一言
  *
  * 创建一条新的一言记录。
  */
-export const createHitokoto = <ThrowOnError extends boolean = false>(options: Options<CreateHitokotoData, ThrowOnError>) => (options.client ?? client).post<CreateHitokotoResponses, CreateHitokotoErrors, ThrowOnError>({
+export const createHitokoto = <ThrowOnError extends boolean = false>(options: Options<CreateHitokotoData, ThrowOnError>) => (options.client ?? client).post<CreateHitokotoResponses, CreateHitokotoErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/api/hitokoto',
     ...options,
@@ -45,7 +50,8 @@ export const createHitokoto = <ThrowOnError extends boolean = false>(options: Op
  *
  * 从数据库中查询所有的一言记录。
  */
-export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoListResponses, GetHitokotoListErrors, ThrowOnError>({
+export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoListResponses, GetHitokotoListErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/api/hitokoto/list',
     ...options
@@ -56,7 +62,8 @@ export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: 
  *
  * 传入一言的 ID，从数据库中删除对应的记录。
  */
-export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError>({
+export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/api/hitokoto/{id}',
     ...options
@@ -67,7 +74,8 @@ export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options
  *
  * 传入一言的 ID，从数据库中查询对应的记录。
  */
-export const getHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetHitokotoByIdResponses, GetHitokotoByIdErrors, ThrowOnError>({
+export const getHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetHitokotoByIdResponses, GetHitokotoByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/api/hitokoto/{id}',
     ...options
@@ -78,21 +86,30 @@ export const getHitokotoById = <ThrowOnError extends boolean = false>(options: O
  *
  * 分页获取所有用户的列表。
  */
-export const getUserList = <ThrowOnError extends boolean = false>(options?: Options<GetUserListData, ThrowOnError>) => (options?.client ?? client).get<GetUserListResponses, GetUserListErrors, ThrowOnError>({ url: '/api/user/list', ...options });
+export const getUserList = <ThrowOnError extends boolean = false>(options?: Options<GetUserListData, ThrowOnError>) => (options?.client ?? client).get<GetUserListResponses, GetUserListErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/api/user/list',
+    ...options
+});
 
 /**
  * 获取用户
  *
  * 传入用户的 ID，从数据库中查询指定的用户。
  */
-export const getUserById = <ThrowOnError extends boolean = false>(options: Options<GetUserByIdData, ThrowOnError>) => (options.client ?? client).get<GetUserByIdResponses, GetUserByIdErrors, ThrowOnError>({ url: '/api/user/{id}', ...options });
+export const getUserById = <ThrowOnError extends boolean = false>(options: Options<GetUserByIdData, ThrowOnError>) => (options.client ?? client).get<GetUserByIdResponses, GetUserByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/api/user/{id}',
+    ...options
+});
 
 /**
  * 用户登录
  *
  * 用户登录接口
  */
-export const login = <ThrowOnError extends boolean = false>(options: Options<LoginData, ThrowOnError>) => (options.client ?? client).post<LoginResponses, LoginErrors, ThrowOnError>({
+export const login = <ThrowOnError extends boolean = false>(options: Options<LoginData, ThrowOnError>) => (options.client ?? client).post<LoginResponses, LoginErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     url: '/auth/login',
     ...options,
     headers: {
@@ -106,7 +123,8 @@ export const login = <ThrowOnError extends boolean = false>(options: Options<Log
  *
  * 用户登出接口，清除用户的会话信息。
  */
-export const logout = <ThrowOnError extends boolean = false>(options?: Options<LogoutData, ThrowOnError>) => (options?.client ?? client).post<LogoutResponses, LogoutErrors, ThrowOnError>({
+export const logout = <ThrowOnError extends boolean = false>(options?: Options<LogoutData, ThrowOnError>) => (options?.client ?? client).post<LogoutResponses, LogoutErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/auth/logout',
     ...options
@@ -117,7 +135,8 @@ export const logout = <ThrowOnError extends boolean = false>(options?: Options<L
  *
  * 使用刷新令牌获取新的访问令牌。
  */
-export const refreshToken = <ThrowOnError extends boolean = false>(options: Options<RefreshTokenData, ThrowOnError>) => (options.client ?? client).post<RefreshTokenResponses, RefreshTokenErrors, ThrowOnError>({
+export const refreshToken = <ThrowOnError extends boolean = false>(options: Options<RefreshTokenData, ThrowOnError>) => (options.client ?? client).post<RefreshTokenResponses, RefreshTokenErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     url: '/auth/refresh',
     ...options,
     headers: {
@@ -131,7 +150,8 @@ export const refreshToken = <ThrowOnError extends boolean = false>(options: Opti
  *
  * 用户注册接口
  */
-export const register = <ThrowOnError extends boolean = false>(options: Options<RegisterData, ThrowOnError>) => (options.client ?? client).post<RegisterResponses, RegisterErrors, ThrowOnError>({
+export const register = <ThrowOnError extends boolean = false>(options: Options<RegisterData, ThrowOnError>) => (options.client ?? client).post<RegisterResponses, RegisterErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     url: '/auth/register',
     ...options,
     headers: {
@@ -145,7 +165,8 @@ export const register = <ThrowOnError extends boolean = false>(options: Options<
  *
  * 向指定的邮箱发送验证码用于注册或其他用途。
  */
-export const sendVerificationCode = <ThrowOnError extends boolean = false>(options: Options<SendVerificationCodeData, ThrowOnError>) => (options.client ?? client).post<SendVerificationCodeResponses, SendVerificationCodeErrors, ThrowOnError>({
+export const sendVerificationCode = <ThrowOnError extends boolean = false>(options: Options<SendVerificationCodeData, ThrowOnError>) => (options.client ?? client).post<SendVerificationCodeResponses, SendVerificationCodeErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
     url: '/verify/send',
     ...options,
     headers: {
