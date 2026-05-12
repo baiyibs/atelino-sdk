@@ -5,51 +5,117 @@ export type ClientOptions = {
 };
 
 export type AtelinoInternalDtoCreateHitokotoRequest = {
+    /**
+     * 一言内容
+     */
     content: string;
 };
 
 export type AtelinoInternalDtoHitokotoResponse = {
+    /**
+     * 一言内容
+     */
     content?: string;
+    /**
+     * 创建时间
+     */
     created_at?: string;
+    /**
+     * 一言 ID
+     */
     id?: number;
 };
 
 export type AtelinoInternalDtoLoginRequest = {
+    /**
+     * 邮箱地址
+     */
     email: string;
+    /**
+     * 密码
+     */
     password: string;
 };
 
 export type AtelinoInternalDtoRefreshTokenRequest = {
+    /**
+     * 刷新令牌
+     */
     refresh_token: string;
 };
 
 export type AtelinoInternalDtoRegisterRequest = {
+    /**
+     * 邮箱验证码
+     */
     code: string;
+    /**
+     * 邮箱地址
+     */
     email: string;
+    /**
+     * 密码，最少 8 位
+     */
     password: string;
+    /**
+     * 用户名，长度 2-20
+     */
     username: string;
 };
 
 export type AtelinoInternalDtoResponse = {
+    /**
+     * 状态码，200 表示成功
+     */
     code?: number;
+    /**
+     * 响应数据
+     */
     data?: unknown;
+    /**
+     * 响应消息
+     */
     message?: string;
 };
 
 export type AtelinoInternalDtoSendVerificationCodeRequest = {
+    /**
+     * 邮箱地址
+     */
     to: string;
 };
 
 export type AtelinoInternalDtoTokenResponse = {
+    /**
+     * 访问令牌
+     */
     access_token?: string;
+    /**
+     * 刷新令牌
+     */
     refresh_token?: string;
 };
 
 export type AtelinoInternalDtoUserResponse = {
+    /**
+     * 创建时间
+     */
     created_at?: string;
+    /**
+     * 邮箱地址
+     */
     email?: string;
+    /**
+     * 用户 ID
+     */
     id?: number;
-    role?: string;
+    /**
+     * 角色：user 或 admin
+     */
+    role?: 'user' | 'admin';
+    /**
+     * 用户名
+     */
     username?: string;
 };
 
