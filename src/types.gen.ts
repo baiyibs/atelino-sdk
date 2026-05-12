@@ -19,6 +19,10 @@ export type AtelinoInternalDtoLoginRequest = {
     password: string;
 };
 
+export type AtelinoInternalDtoRefreshTokenRequest = {
+    refresh_token: string;
+};
+
 export type AtelinoInternalDtoRegisterRequest = {
     code: string;
     email: string;
@@ -30,6 +34,10 @@ export type AtelinoInternalDtoResponse = {
     code?: number;
     data?: unknown;
     message?: string;
+};
+
+export type AtelinoInternalDtoSendVerificationCodeRequest = {
+    to: string;
 };
 
 export type AtelinoInternalDtoTokenResponse = {
@@ -45,14 +53,14 @@ export type AtelinoInternalDtoUserResponse = {
     username?: string;
 };
 
-export type GetApiHitokotoData = {
+export type GetHitokotoRandomData = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/hitokoto';
 };
 
-export type GetApiHitokotoErrors = {
+export type GetHitokotoRandomErrors = {
     /**
      * 没有找到对应的一言
      */
@@ -63,9 +71,9 @@ export type GetApiHitokotoErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type GetApiHitokotoError = GetApiHitokotoErrors[keyof GetApiHitokotoErrors];
+export type GetHitokotoRandomError = GetHitokotoRandomErrors[keyof GetHitokotoRandomErrors];
 
-export type GetApiHitokotoResponses = {
+export type GetHitokotoRandomResponses = {
     /**
      * 请求成功
      */
@@ -74,9 +82,9 @@ export type GetApiHitokotoResponses = {
     };
 };
 
-export type GetApiHitokotoResponse = GetApiHitokotoResponses[keyof GetApiHitokotoResponses];
+export type GetHitokotoRandomResponse = GetHitokotoRandomResponses[keyof GetHitokotoRandomResponses];
 
-export type PostApiHitokotoData = {
+export type CreateHitokotoData = {
     /**
      * 一言内容
      */
@@ -86,7 +94,7 @@ export type PostApiHitokotoData = {
     url: '/api/hitokoto';
 };
 
-export type PostApiHitokotoErrors = {
+export type CreateHitokotoErrors = {
     /**
      * 请求参数错误
      */
@@ -101,9 +109,9 @@ export type PostApiHitokotoErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type PostApiHitokotoError = PostApiHitokotoErrors[keyof PostApiHitokotoErrors];
+export type CreateHitokotoError = CreateHitokotoErrors[keyof CreateHitokotoErrors];
 
-export type PostApiHitokotoResponses = {
+export type CreateHitokotoResponses = {
     /**
      * 添加成功
      */
@@ -112,9 +120,9 @@ export type PostApiHitokotoResponses = {
     };
 };
 
-export type PostApiHitokotoResponse = PostApiHitokotoResponses[keyof PostApiHitokotoResponses];
+export type CreateHitokotoResponse = CreateHitokotoResponses[keyof CreateHitokotoResponses];
 
-export type GetApiHitokotoListData = {
+export type GetHitokotoListData = {
     body?: never;
     path?: never;
     query?: {
@@ -126,7 +134,7 @@ export type GetApiHitokotoListData = {
     url: '/api/hitokoto/list';
 };
 
-export type GetApiHitokotoListErrors = {
+export type GetHitokotoListErrors = {
     /**
      * 未授权
      */
@@ -137,9 +145,9 @@ export type GetApiHitokotoListErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type GetApiHitokotoListError = GetApiHitokotoListErrors[keyof GetApiHitokotoListErrors];
+export type GetHitokotoListError = GetHitokotoListErrors[keyof GetHitokotoListErrors];
 
-export type GetApiHitokotoListResponses = {
+export type GetHitokotoListResponses = {
     /**
      * 请求成功
      */
@@ -148,9 +156,9 @@ export type GetApiHitokotoListResponses = {
     };
 };
 
-export type GetApiHitokotoListResponse = GetApiHitokotoListResponses[keyof GetApiHitokotoListResponses];
+export type GetHitokotoListResponse = GetHitokotoListResponses[keyof GetHitokotoListResponses];
 
-export type DeleteApiHitokotoByIdData = {
+export type DeleteHitokotoByIdData = {
     body?: never;
     path: {
         /**
@@ -162,7 +170,7 @@ export type DeleteApiHitokotoByIdData = {
     url: '/api/hitokoto/{id}';
 };
 
-export type DeleteApiHitokotoByIdErrors = {
+export type DeleteHitokotoByIdErrors = {
     /**
      * 请求参数错误
      */
@@ -181,18 +189,18 @@ export type DeleteApiHitokotoByIdErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type DeleteApiHitokotoByIdError = DeleteApiHitokotoByIdErrors[keyof DeleteApiHitokotoByIdErrors];
+export type DeleteHitokotoByIdError = DeleteHitokotoByIdErrors[keyof DeleteHitokotoByIdErrors];
 
-export type DeleteApiHitokotoByIdResponses = {
+export type DeleteHitokotoByIdResponses = {
     /**
      * 删除成功
      */
     200: AtelinoInternalDtoResponse;
 };
 
-export type DeleteApiHitokotoByIdResponse = DeleteApiHitokotoByIdResponses[keyof DeleteApiHitokotoByIdResponses];
+export type DeleteHitokotoByIdResponse = DeleteHitokotoByIdResponses[keyof DeleteHitokotoByIdResponses];
 
-export type GetApiHitokotoByIdData = {
+export type GetHitokotoByIdData = {
     body?: never;
     path: {
         /**
@@ -204,7 +212,7 @@ export type GetApiHitokotoByIdData = {
     url: '/api/hitokoto/{id}';
 };
 
-export type GetApiHitokotoByIdErrors = {
+export type GetHitokotoByIdErrors = {
     /**
      * 请求参数错误
      */
@@ -223,9 +231,9 @@ export type GetApiHitokotoByIdErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type GetApiHitokotoByIdError = GetApiHitokotoByIdErrors[keyof GetApiHitokotoByIdErrors];
+export type GetHitokotoByIdError = GetHitokotoByIdErrors[keyof GetHitokotoByIdErrors];
 
-export type GetApiHitokotoByIdResponses = {
+export type GetHitokotoByIdResponses = {
     /**
      * 请求成功
      */
@@ -234,9 +242,41 @@ export type GetApiHitokotoByIdResponses = {
     };
 };
 
-export type GetApiHitokotoByIdResponse = GetApiHitokotoByIdResponses[keyof GetApiHitokotoByIdResponses];
+export type GetHitokotoByIdResponse = GetHitokotoByIdResponses[keyof GetHitokotoByIdResponses];
 
-export type GetApiUserByIdData = {
+export type GetUserListData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * 页数，默认为1
+         */
+        page?: number;
+    };
+    url: '/api/user/list';
+};
+
+export type GetUserListErrors = {
+    /**
+     * 数据库错误
+     */
+    500: AtelinoInternalDtoResponse;
+};
+
+export type GetUserListError = GetUserListErrors[keyof GetUserListErrors];
+
+export type GetUserListResponses = {
+    /**
+     * 请求成功
+     */
+    200: AtelinoInternalDtoResponse & {
+        data?: Array<AtelinoInternalDtoUserResponse>;
+    };
+};
+
+export type GetUserListResponse = GetUserListResponses[keyof GetUserListResponses];
+
+export type GetUserByIdData = {
     body?: never;
     path: {
         /**
@@ -248,7 +288,7 @@ export type GetApiUserByIdData = {
     url: '/api/user/{id}';
 };
 
-export type GetApiUserByIdErrors = {
+export type GetUserByIdErrors = {
     /**
      * 请求参数错误
      */
@@ -263,9 +303,9 @@ export type GetApiUserByIdErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type GetApiUserByIdError = GetApiUserByIdErrors[keyof GetApiUserByIdErrors];
+export type GetUserByIdError = GetUserByIdErrors[keyof GetUserByIdErrors];
 
-export type GetApiUserByIdResponses = {
+export type GetUserByIdResponses = {
     /**
      * 请求成功
      */
@@ -274,9 +314,9 @@ export type GetApiUserByIdResponses = {
     };
 };
 
-export type GetApiUserByIdResponse = GetApiUserByIdResponses[keyof GetApiUserByIdResponses];
+export type GetUserByIdResponse = GetUserByIdResponses[keyof GetUserByIdResponses];
 
-export type PostAuthLoginData = {
+export type LoginData = {
     /**
      * 登录请求体
      */
@@ -286,7 +326,7 @@ export type PostAuthLoginData = {
     url: '/auth/login';
 };
 
-export type PostAuthLoginErrors = {
+export type LoginErrors = {
     /**
      * 请求参数错误
      */
@@ -301,9 +341,9 @@ export type PostAuthLoginErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type PostAuthLoginError = PostAuthLoginErrors[keyof PostAuthLoginErrors];
+export type LoginError = LoginErrors[keyof LoginErrors];
 
-export type PostAuthLoginResponses = {
+export type LoginResponses = {
     /**
      * 登录成功
      */
@@ -312,9 +352,76 @@ export type PostAuthLoginResponses = {
     };
 };
 
-export type PostAuthLoginResponse = PostAuthLoginResponses[keyof PostAuthLoginResponses];
+export type LoginResponse = LoginResponses[keyof LoginResponses];
 
-export type PostAuthRegisterData = {
+export type LogoutData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/auth/logout';
+};
+
+export type LogoutErrors = {
+    /**
+     * 未登录或登录状态无效
+     */
+    401: AtelinoInternalDtoResponse;
+    /**
+     * 登出失败
+     */
+    500: AtelinoInternalDtoResponse;
+};
+
+export type LogoutError = LogoutErrors[keyof LogoutErrors];
+
+export type LogoutResponses = {
+    /**
+     * 登出成功
+     */
+    200: AtelinoInternalDtoResponse;
+};
+
+export type LogoutResponse = LogoutResponses[keyof LogoutResponses];
+
+export type RefreshTokenData = {
+    /**
+     * 刷新令牌请求体
+     */
+    body: AtelinoInternalDtoRefreshTokenRequest;
+    path?: never;
+    query?: never;
+    url: '/auth/refresh';
+};
+
+export type RefreshTokenErrors = {
+    /**
+     * 请求参数错误
+     */
+    400: AtelinoInternalDtoResponse;
+    /**
+     * 令牌无效或已过期
+     */
+    401: AtelinoInternalDtoResponse;
+    /**
+     * 服务器内部错误
+     */
+    500: AtelinoInternalDtoResponse;
+};
+
+export type RefreshTokenError = RefreshTokenErrors[keyof RefreshTokenErrors];
+
+export type RefreshTokenResponses = {
+    /**
+     * 刷新成功
+     */
+    200: AtelinoInternalDtoResponse & {
+        data?: AtelinoInternalDtoTokenResponse;
+    };
+};
+
+export type RefreshTokenResponse = RefreshTokenResponses[keyof RefreshTokenResponses];
+
+export type RegisterData = {
     /**
      * 注册请求体
      */
@@ -324,7 +431,7 @@ export type PostAuthRegisterData = {
     url: '/auth/register';
 };
 
-export type PostAuthRegisterErrors = {
+export type RegisterErrors = {
     /**
      * 请求参数错误
      */
@@ -339,13 +446,49 @@ export type PostAuthRegisterErrors = {
     500: AtelinoInternalDtoResponse;
 };
 
-export type PostAuthRegisterError = PostAuthRegisterErrors[keyof PostAuthRegisterErrors];
+export type RegisterError = RegisterErrors[keyof RegisterErrors];
 
-export type PostAuthRegisterResponses = {
+export type RegisterResponses = {
     /**
      * 注册成功
      */
     200: AtelinoInternalDtoResponse;
 };
 
-export type PostAuthRegisterResponse = PostAuthRegisterResponses[keyof PostAuthRegisterResponses];
+export type RegisterResponse = RegisterResponses[keyof RegisterResponses];
+
+export type SendVerificationCodeData = {
+    /**
+     * 邮箱地址
+     */
+    body: AtelinoInternalDtoSendVerificationCodeRequest;
+    path?: never;
+    query?: never;
+    url: '/verify/send';
+};
+
+export type SendVerificationCodeErrors = {
+    /**
+     * 请求参数错误
+     */
+    400: AtelinoInternalDtoResponse;
+    /**
+     * 请求过于频繁，请稍后再试
+     */
+    429: AtelinoInternalDtoResponse;
+    /**
+     * 发送验证码失败
+     */
+    500: AtelinoInternalDtoResponse;
+};
+
+export type SendVerificationCodeError = SendVerificationCodeErrors[keyof SendVerificationCodeErrors];
+
+export type SendVerificationCodeResponses = {
+    /**
+     * 发送成功
+     */
+    200: AtelinoInternalDtoResponse;
+};
+
+export type SendVerificationCodeResponse = SendVerificationCodeResponses[keyof SendVerificationCodeResponses];
