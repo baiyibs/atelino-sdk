@@ -19,91 +19,6 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
- * 随机获取一言
- *
- * 从数据库中随机获取一条一言记录。
- */
-export const getHitokotoRandom = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoRandomData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoRandomResponses, GetHitokotoRandomErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    url: '/api/hitokoto',
-    ...options
-});
-
-/**
- * 添加一言
- *
- * 创建一条新的一言记录。
- */
-export const createHitokoto = <ThrowOnError extends boolean = false>(options: Options<CreateHitokotoData, ThrowOnError>) => (options.client ?? client).post<CreateHitokotoResponses, CreateHitokotoErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/api/hitokoto',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * 获取一言列表
- *
- * 从数据库中查询所有的一言记录。
- */
-export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoListResponses, GetHitokotoListErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/api/hitokoto/list',
-    ...options
-});
-
-/**
- * 删除一言
- *
- * 传入一言的 ID，从数据库中删除对应的记录。
- */
-export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/api/hitokoto/{id}',
-    ...options
-});
-
-/**
- * 获取一言
- *
- * 传入一言的 ID，从数据库中查询对应的记录。
- */
-export const getHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetHitokotoByIdResponses, GetHitokotoByIdErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    security: [{ name: 'Authorization', type: 'apiKey' }],
-    url: '/api/hitokoto/{id}',
-    ...options
-});
-
-/**
- * 获取用户列表
- *
- * 分页获取所有用户的列表。
- */
-export const getUserList = <ThrowOnError extends boolean = false>(options?: Options<GetUserListData, ThrowOnError>) => (options?.client ?? client).get<GetUserListResponses, GetUserListErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    url: '/api/user/list',
-    ...options
-});
-
-/**
- * 获取用户
- *
- * 传入用户的 ID，从数据库中查询指定的用户。
- */
-export const getUserById = <ThrowOnError extends boolean = false>(options: Options<GetUserByIdData, ThrowOnError>) => (options.client ?? client).get<GetUserByIdResponses, GetUserByIdErrors, ThrowOnError, 'data'>({
-    responseStyle: 'data',
-    url: '/api/user/{id}',
-    ...options
-});
-
-/**
  * 用户登录
  *
  * 用户登录接口
@@ -158,6 +73,91 @@ export const register = <ThrowOnError extends boolean = false>(options: Options<
         'Content-Type': 'application/json',
         ...options.headers
     }
+});
+
+/**
+ * 随机获取一言
+ *
+ * 从数据库中随机获取一条一言记录。
+ */
+export const getHitokotoRandom = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoRandomData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoRandomResponses, GetHitokotoRandomErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/hitokoto',
+    ...options
+});
+
+/**
+ * 添加一言
+ *
+ * 创建一条新的一言记录。
+ */
+export const createHitokoto = <ThrowOnError extends boolean = false>(options: Options<CreateHitokotoData, ThrowOnError>) => (options.client ?? client).post<CreateHitokotoResponses, CreateHitokotoErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    security: [{ name: 'Authorization', type: 'apiKey' }],
+    url: '/hitokoto',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * 获取一言列表
+ *
+ * 从数据库中查询所有的一言记录。
+ */
+export const getHitokotoList = <ThrowOnError extends boolean = false>(options?: Options<GetHitokotoListData, ThrowOnError>) => (options?.client ?? client).get<GetHitokotoListResponses, GetHitokotoListErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    security: [{ name: 'Authorization', type: 'apiKey' }],
+    url: '/hitokoto/list',
+    ...options
+});
+
+/**
+ * 删除一言
+ *
+ * 传入一言的 ID，从数据库中删除对应的记录。
+ */
+export const deleteHitokotoById = <ThrowOnError extends boolean = false>(options: Options<DeleteHitokotoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteHitokotoByIdResponses, DeleteHitokotoByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    security: [{ name: 'Authorization', type: 'apiKey' }],
+    url: '/hitokoto/{id}',
+    ...options
+});
+
+/**
+ * 获取一言
+ *
+ * 传入一言的 ID，从数据库中查询对应的记录。
+ */
+export const getHitokotoById = <ThrowOnError extends boolean = false>(options: Options<GetHitokotoByIdData, ThrowOnError>) => (options.client ?? client).get<GetHitokotoByIdResponses, GetHitokotoByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    security: [{ name: 'Authorization', type: 'apiKey' }],
+    url: '/hitokoto/{id}',
+    ...options
+});
+
+/**
+ * 获取用户列表
+ *
+ * 分页获取所有用户的列表。
+ */
+export const getUserList = <ThrowOnError extends boolean = false>(options?: Options<GetUserListData, ThrowOnError>) => (options?.client ?? client).get<GetUserListResponses, GetUserListErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/user/list',
+    ...options
+});
+
+/**
+ * 获取用户
+ *
+ * 传入用户的 ID，从数据库中查询指定的用户。
+ */
+export const getUserById = <ThrowOnError extends boolean = false>(options: Options<GetUserByIdData, ThrowOnError>) => (options.client ?? client).get<GetUserByIdResponses, GetUserByIdErrors, ThrowOnError, 'data'>({
+    responseStyle: 'data',
+    url: '/user/{id}',
+    ...options
 });
 
 /**
