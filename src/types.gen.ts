@@ -37,6 +37,17 @@ export type AtelinoInternalDtoLoginRequest = {
     password: string;
 };
 
+export type AtelinoInternalDtoPaginatedResponse = {
+    /**
+     * 列表数据
+     */
+    list?: unknown;
+    /**
+     * 总记录数
+     */
+    total?: number;
+};
+
 export type AtelinoInternalDtoRefreshTokenRequest = {
     /**
      * 刷新令牌
@@ -359,7 +370,9 @@ export type GetHitokotoListResponses = {
      * 请求成功
      */
     200: AtelinoInternalDtoResponse & {
-        data?: Array<AtelinoInternalDtoHitokotoResponse>;
+        data?: AtelinoInternalDtoPaginatedResponse & {
+            list?: Array<AtelinoInternalDtoHitokotoResponse>;
+        };
     };
 };
 
@@ -477,7 +490,9 @@ export type GetUserListResponses = {
      * 请求成功
      */
     200: AtelinoInternalDtoResponse & {
-        data?: Array<AtelinoInternalDtoUserResponse>;
+        data?: AtelinoInternalDtoPaginatedResponse & {
+            list?: Array<AtelinoInternalDtoUserResponse>;
+        };
     };
 };
 
