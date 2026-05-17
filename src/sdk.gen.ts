@@ -145,6 +145,7 @@ export const getHitokotoById = <ThrowOnError extends boolean = false>(options: O
  */
 export const getUserList = <ThrowOnError extends boolean = false>(options?: Options<GetUserListData, ThrowOnError>) => (options?.client ?? client).get<GetUserListResponses, GetUserListErrors, ThrowOnError, 'data'>({
     responseStyle: 'data',
+    security: [{ name: 'Authorization', type: 'apiKey' }],
     url: '/user/list',
     ...options
 });
